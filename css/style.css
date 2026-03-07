@@ -27,7 +27,7 @@ body.dark{
 body{
     line-height: 1.5;
     font-size: 16px;
-    font-family: 'poppins' sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 ::before, ::after{
@@ -84,6 +84,33 @@ body{
     justify-content: center;
     align-items: center;
     transition: all 0.3s ease;
+}
+
+.aside .social-links{
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    gap: 12px;
+}
+
+.aside .social-links a{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    width: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--bg-black-50);
+    color: var(--text-black-700);
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+.aside .social-links a:hover{
+    background: var(--skin-color);
+    border-color: var(--skin-color);
+    color: #fff;
+    transform: translateY(-3px);
 }
 
 ul{
@@ -149,6 +176,13 @@ ul{
     border-bottom: 1px solid var(--bg-black-50);
     display: block;
     color: var(--text-black-900);
+    padding: 8px 0;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+.aside .nav li a:hover{
+    color: var(--skin-color);
+    padding-left: 6px;
 }
 
 .aside .nav li a.active{
@@ -482,7 +516,7 @@ h3.my-profession{
 .about .about-content .education,
 .about .about-content .experience{
     flex: 0 0 50%;
-    max-width: 100%;
+    max-width: 50%;
     margin-top: 30px;
 }
 
@@ -500,7 +534,7 @@ h3.my-profession{
 
 .about .about-content .timeline{
     background-color: var(--bg-black-100);
-    padding: 30px  15px;
+    padding: 20px 15px;
     border: 1px solid var(--bg-black-50);
     border-radius: 10px;
     width: 100%;
@@ -514,7 +548,7 @@ h3.my-profession{
 .about .about-content .timeline .timeline-item{
     position: relative;
     padding-left: 37px;
-    padding-bottom: 50px;
+    padding-bottom: 25px;
 }
 
 .about .about-content .timeline .timeline-item:last-child{
@@ -543,7 +577,7 @@ h3.my-profession{
 
 .about .about-content .timeline .timeline-date{
     color: var(--text-black-700);
-    margin-bottom: 12px;
+    margin-bottom: 6px;
     font-size: 14px;
     font-weight: 400;
 }
@@ -555,7 +589,7 @@ h3.my-profession{
 .about .about-content .timeline .timeline-title{
     font-weight: 700;
     font-size: 18px;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     text-transform: capitalize;
     color: var(--text-black-900);
 }
@@ -686,7 +720,7 @@ h3.my-profession{
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
+    color: rgb(255, 255, 255);
     opacity: 0;
     transition: opacity 0.5s ease;
 }
@@ -879,8 +913,11 @@ h3.my-profession{
     .contact .contact-form .btn{
         height: 50px;
         padding: 0 50px;
-        margin-left: 130px;
     }
+}
+
+.sidebar-overlay{
+    display: none;
 }
 
 @media (max-width:767px){
@@ -897,8 +934,51 @@ h3.my-profession{
         max-width: 100%;
     }
 
+    /* Left drawer — fixed width, slides in from left, floats over content */
     .aside{
-        width: 100%;
-        left: 100%;    
+        width: 270px;
+        left: -270px;
+        box-shadow: 5px 0 20px rgba(0,0,0,0.4);
+    }
+
+    .aside.open{
+        left: 0;
+    }
+
+    /* Hamburger stays top-left, fixed so it's always reachable */
+    .aside .nav-toggler{
+        position: fixed;
+        left: 20px;
+        top: 15px;
+        z-index: 200;
+    }
+
+    /* X button anchors inside the open drawer, top-right */
+    .aside .nav-toggler.open{
+        position: fixed;
+        left: 230px;
+        top: 15px;
+    }
+
+    /* Page content never moves */
+    .section.open{
+        left: 0;
+    }
+
+    /* Dark overlay behind the drawer */
+    .sidebar-overlay{
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.55);
+        z-index: 9;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .sidebar-overlay.active{
+        opacity: 1;
+        pointer-events: all;
     }
 }
