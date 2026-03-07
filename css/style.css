@@ -799,12 +799,14 @@ h3.my-profession{
 }
 
 .contact .contact-form .row{
-    display:flex; 
-    flex-direction:column; 
-    align-items:center; 
-    justify-content:center; 
-    gap:15px; 
-    width:100%;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 15px; 
+    width: 100%;
+    margin-left: 0; 
+    margin-right: 0;
 }
 
 /* ===== PRELOADER ===== */
@@ -931,7 +933,7 @@ h3.my-profession{
     .contact .contact-form{
         flex: 0 0 100%;
         max-width: 100%;
-        margin-left: -30px;
+        margin-left: 0px;
         margin-bottom: 50px;
     }
 
@@ -1034,5 +1036,18 @@ h3.my-profession{
     .sidebar-overlay.active{
         opacity: 1;
         pointer-events: all;
+    }
+
+    .contact-form .row {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .contact-form .row .btn {
+        width: fit-content;
+        margin: 0 auto;
     }
 }
