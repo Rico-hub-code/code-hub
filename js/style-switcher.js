@@ -52,5 +52,6 @@ window.addEventListener('load', () => {
     setTimeout(() => {
         preloader.classList.add('fade-out');
         setTimeout(() => preloader.remove(), 600);
-    }, 3000); // minimum 5 seconds
+    }, 2000); // minimum 5 seconds
+
 });
