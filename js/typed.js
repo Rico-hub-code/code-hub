@@ -116,17 +116,35 @@ const nav = document.querySelector(".nav"),
         addBackSection(sectionIndex);
     })
     const navTogglerBtn = document.querySelector(".nav-toggler"),
-        aside = document.querySelector(".aside");
+        aside = document.querySelector(".aside"),
+        sidebarOverlay = document.querySelector(".sidebar-overlay");
+
         navTogglerBtn.addEventListener("click", () => 
             {
                 asideSectionTogglerBtn();
             })
-            function asideSectionTogglerBtn()
-            {
-                aside.classList.toggle("open");
-                navTogglerBtn.classList.toggle("open");
+
+        // Clicking the overlay closes the sidebar
+        if(sidebarOverlay) {
+            sidebarOverlay.addEventListener("click", () => {
+                if(aside.classList.contains("open")) {
+                    asideSectionTogglerBtn();
+                }
+            });
+        }
+
+        function asideSectionTogglerBtn()
+        {
+            aside.classList.toggle("open");
+            navTogglerBtn.classList.toggle("open");
+
+            // On mobile: show/hide overlay instead of pushing sections
+            if(window.innerWidth <= 767) {
+                if(sidebarOverlay) sidebarOverlay.classList.toggle("active");
+            } else {
                 for(let i=0; i<totalSection; i++)
-                    {
-                        allSection[i].classList.toggle("open");
-                    }
+                {
+                    allSection[i].classList.toggle("open");
+                }
             }
+        }
