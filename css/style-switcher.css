@@ -109,3 +109,9 @@
     white-space: nowrap;
     overflow: hidden;
 }
+/* On mobile, keep buttons at top-right but behind the open sidebar */
+@media (max-width: 767px) {
+    .style-switcher {
+        z-index: 9;
+    }
+}
